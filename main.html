@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afif Izzuddin · Dark Portfolio</title>
+    <style>
+        :root {
+            --bg: #0b0f17;
+            --surface: #131a24;
+            --surface-light: #1b2431;
+            --card: #1a2230;
+            --border: #2a3342;
+            --text: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --text-muted: #6b7280;
+            --accent: #38bdf8;
+            --accent-strong: #0ea5e9;
+            --accent-glow: rgba(56, 189, 248, 0.25);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --radius-xs: 8px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            background-image:
+                radial-gradient(ellipse at 30% 0%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 100%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(19, 26, 36, 0.85);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+            animation: fadeInDown 0.7s ease-out;
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 26px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .nav-cta {
+            background: var(--accent);
+            color: #0f172a !important;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .nav-cta:hover {
+            background: var(--accent-strong);
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            padding: 90px 32px 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== PROFILE IMAGE / AVATAR ========== */
+        .hero-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 0 48px var(--accent-glow);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 3px solid var(--accent);
+        }
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .avatar-initials {
+            font-size: 46px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hero-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(56, 189, 248, 0.55);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            margin-bottom: 24px;
+        }
+        .hero p {
+            max-width: 640px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.4px;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #0f172a;
+            box-shadow: 0 4px 16px var(--accent-glow);
+        }
+        .btn-primary:hover {
+            background: var(--accent-strong);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(56, 189, 248, 0.45);
+        }
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: #0f172a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        /* ============ CONTAINER ============ */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+        .section {
+            padding: 70px 0;
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 36px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title .badge-count {
+            background: rgba(56, 189, 248, 0.12);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        /* ============ ABOUT CARD ============ */
+        .about-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 28px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            transition: var(--transition);
+        }
+        .about-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+        .about-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        /* ============ PROJECTS GRID ============ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 16px 40px rgba(56, 189, 248, 0.15);
+        }
+        .project-img {
+            height: 140px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+        }
+        .project-body {
+            padding: 22px 22px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-body h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+        .project-body p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .project-tech span {
+            background: rgba(56, 189, 248, 0.08);
+            color: var(--accent);
+            font-size: 0.72rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+        }
+
+        /* ============ SKILLS ============ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .skill-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 18px 20px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        .skill-item:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        .skill-bar {
+            height: 6px;
+            background: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+            width: 0%;
+            transition: width 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .skill-item.visible .skill-fill {
+            /* width set via JS */;
+        }
+
+        /* ============ CARDS (Experience, Education) ============ */
+        .card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .info-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 24px 26px;
+            border-radius: var(--radius);
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .info-card:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .info-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .info-content h3 {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1.05rem;
+        }
+        .info-content .sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .info-content .date {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .info-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ============ BADGES ============ */
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .badge {
+            background: rgba(56, 189, 248, 0.06);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.82rem;
+            color: var(--text);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: default;
+        }
+        .badge:hover {
+            background: var(--accent);
+            color: #0f172a;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+        .badge::before {
+            content: '🏅';
+            font-size: 0.8rem;
+        }
+
+        /* ============ REFERENCE ============ */
+        .ref-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 24px 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .ref-card h3 {
+            color: #fff;
+        }
+        .ref-card p {
+            color: var(--text-secondary);
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            text-align: center;
+            padding: 32px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 700px) {
+            .navbar {
+                padding: 0 18px;
+                height: 60px;
+            }
+            .nav-links {
+                gap: 14px;
+            }
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 50px 0;
+            }
+            .container {
+                padding: 0 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="navbar">
+        <div class="nav-logo">Afif Izzuddin</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <header class="hero" id="home">
+        <!--
+        =============================================
+        🖼️ HOW TO ADD YOUR PROFILE IMAGE:
+        =============================================
+        1. Place your photo file (e.g., profile.jpg) in the same folder as this HTML.
+        2. Replace the <div class="avatar-initials"> block with an <img> tag:
+           <img src="profile.jpg" alt="Muhammad Afif Izzuddin">
+        3. Delete the <div class="avatar-initials">AI</div> line.
+        4. The CSS will automatically make it round and cover the space.
+        Example:
+        <div class="hero-avatar">
+            <img src="profile.jpg" alt="Profile Picture">
+        </div>
+        =============================================
+        -->
+        <div class="hero-avatar">
+            <!-- Default initials; replace with <img src="your-photo.jpg" alt="Profile"> -->
+            <div class="avatar-initials">AI</div>
+            <!-- Uncomment below and add your image path -->
+            <!-- <img src="profile.jpg" alt="Muhammad Afif Izzuddin"> -->
+        </div>
+
+        <h1>Muhammad Afif Izzuddin<br>Mohd Najib</h1>
+        <p class="tagline">Electronic Network Design · IoT & Embedded Systems</p>
+        <p>Bachelor's student at UniMAP building intelligent hardware-software solutions. Passionate about networking, cybersecurity, and creating technology that solves real‑world problems.</p>
+        <div class="hero-buttons">
+            <a href="https://www.linkedin.com/in/muhammad-afif-izzuddin-mohd-najib" target="_blank" class="btn btn-primary">LinkedIn</a>
+            <a href="mailto:afifizzuddin.n@gmail.com" class="btn btn-outline">Email Me</a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- About -->
+        <section class="section" id="about">
+            <h2 class="section-title">About <span class="badge-count">Me</span></h2>
+            <div class="about-card">
+                <div class="about-icon">👨‍💻</div>
+                <p style="color:var(--text-secondary); font-size:0.98rem;">
+                    Electronic Network Design undergraduate from <strong style="color:#fff;">Universiti Malaysia Perlis (UniMAP)</strong>, currently in Semester 3 of the Bachelor of Electronic Engineering Technology (Hons.) program. I bring hands‑on experience with embedded systems, IoT prototyping, and web‑based monitoring tools. I'm seeking an internship in Semester 6 to apply my skills in a professional engineering environment.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section" id="projects">
+            <h2 class="section-title">Featured Projects <span class="badge-count">4</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">🌡️📊</div>
+                    <div class="project-body">
+                        <h3>Portable Microclimate Monitor</h3>
+                        <p>Real-time environmental monitoring using Raspberry Pi 3B+, DHT11, LDR, and rain sensors. Live data via Flask web interface.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>Flask</span><span>Raspberry Pi</span><span>IoT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">🧺☀️</div>
+                    <div class="project-body">
+                        <h3>Automatic Drying Rack</h3>
+                        <p>ESP32-controlled smart rack using rain/temp sensors. Remote notifications via Blynk. 🥇 Gold Award DIPEX 2023.</p>
+                        <div class="project-tech">
+                            <span>C++</span><span>ESP32</span><span>Blynk</span><span>IoT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">🏥📅</div>
+                    <div class="project-body">
+                        <h3>Doctor Appointment System</h3>
+                        <p>Web-based booking platform for doctor-patient appointments with MySQL database.</p>
+                        <div class="project-tech">
+                            <span>PHP</span><span>MySQL</span><span>HTML</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">📚📈</div>
+                    <div class="project-body">
+                        <h3>Student Result Management</h3>
+                        <p>User-friendly system for schools to manage student grades. Designed for admins, teachers, parents, and students.</p>
+                        <div class="project-tech">
+                            <span>Web Dev</span><span>Database</span><span>UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section" id="skills">
+            <h2 class="section-title">Technical Skills <span class="badge-count">Core</span></h2>
+            <div class="skills-grid">
+                <div class="skill-item" data-width="92"><div class="skill-header"><span>C / C++</span><span>92%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="85"><div class="skill-header"><span>HTML / PHP</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="90"><div class="skill-header"><span>MySQL & Databases</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="82"><div class="skill-header"><span>VHDL</span><span>82%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="80"><div class="skill-header"><span>JAVA</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="94"><div class="skill-header"><span>Cisco Packet Tracer</span><span>94%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="88"><div class="skill-header"><span>Arduino / ESP32</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="78"><div class="skill-header"><span>AutoCAD / Quartus II</span><span>78%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+            </div>
+            <div style="margin-top:28px;">
+                <p style="font-weight:600; margin-bottom:14px; color:var(--text);">🛠️ Tools & Platforms</p>
+                <div class="badge-grid">
+                    <span class="badge">Microsoft Office</span>
+                    <span class="badge">Canva</span>
+                    <span class="badge">Scilab</span>
+                    <span class="badge">Putty</span>
+                    <span class="badge">WampServer</span>
+                    <span class="badge">Blynk</span>
+                    <span class="badge">Huawei eSNP</span>
+                    <span class="badge">Raspbian</span>
+                    <span class="badge">Ubuntu</span>
+                    <span class="badge">Windows 11</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="section" id="experience">
+            <h2 class="section-title">Work Experience <span class="badge-count">1</span></h2>
+            <div class="card-list">
+                <div class="info-card">
+                    <div class="info-icon">💼</div>
+                    <div class="info-content">
+                        <h3>Industrial Training – IT Department</h3>
+                        <div class="sub">Imedikel Pharma Holding Berhad</div>
+                        <div class="date">08 Jan 2024 – 05 May 2024</div>
+                        <p>Provided IT support, managed data analysis with Xilnex & Excel, assisted in system reporting, and participated in software research/automation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section" id="education">
+            <h2 class="section-title">Education <span class="badge-count">2</span></h2>
+            <div class="card-list">
+                <div class="info-card">
+                    <div class="info-icon">🎓</div>
+                    <div class="info-content">
+                        <h3>Bachelor of Electronic Engineering Technology (Hons.)</h3>
+                        <div class="sub">Electronic Network Design · UniMAP</div>
+                        <div class="date">October 2024 – Present (Semester 3)</div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📘</div>
+                    <div class="info-content">
+                        <h3>Diploma in Computer Engineering</h3>
+                        <div class="sub">Universiti Malaysia Perlis (UniMAP)</div>
+                        <div class="date">July 2021 – July 2024</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards & Certifications -->
+        <section class="section" id="awards">
+            <h2 class="section-title">Awards & Certifications <span class="badge-count">11</span></h2>
+            <div class="badge-grid">
+                <span class="badge">Junior Cybersecurity Analyst</span>
+                <span class="badge">Networking Academy Learn-A-Thon 2025</span>
+                <span class="badge">AWS Cloud Foundations</span>
+                <span class="badge">Discovering Entrepreneurship</span>
+                <span class="badge">Ethical Hacker</span>
+                <span class="badge">Intro to Cybersecurity</span>
+                <span class="badge">Intro to Data Science</span>
+                <span class="badge">Intro to IoT</span>
+                <span class="badge">Intro to Modern AI</span>
+                <span class="badge">Cisco CCNA: Intro to Networks</span>
+                <span class="badge">Gold Award DIPEX 2023</span>
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section class="section" id="languages">
+            <h2 class="section-title">Languages <span class="badge-count">2</span></h2>
+            <div class="badge-grid">
+                <span class="badge">🇲🇾 Malay – Proficient</span>
+                <span class="badge">🇬🇧 English – Medium</span>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section class="section" id="references">
+            <h2 class="section-title">Reference <span class="badge-count">1</span></h2>
+            <div class="ref-card">
+                <h3>Ts. Dr. 'Aini Syuhada binti Md Zain</h3>
+                <p style="color:var(--text-muted);">Pengerusi Rancangan Teknologi Kejuruteraan Elektronik (Reka Bentuk Rangkaian Elektronik)<br>Faculty of Electronic Engineering Technology (FKTEN), Universiti Malaysia Perlis</p>
+                <p style="margin-top:10px; color:var(--accent);">📧 ainisyuhada@unimap.edu.my &nbsp;|&nbsp; 📞 +60 17-416 4159</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" id="contact">
+        <p>© 2025 Muhammad Afif Izzuddin Mohd Najib · Kota Bharu, Kelantan · <a href="mailto:afifizzuddin.n@gmail.com" style="color:var(--accent);">afifizzuddin.n@gmail.com</a></p>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        sections.forEach(s => observer.observe(s));
+
+        // Skill bar animation
+        const skillItems = document.querySelectorAll('.skill-item');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const fill = entry.target.querySelector('.skill-fill');
+                    const width = entry.target.getAttribute('data-width');
+                    if (fill && width) fill.style.width = width + '%';
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25 });
+        skillItems.forEach(s => skillObserver.observe(s));
+
+        // Initial load check
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                sections.forEach(s => {
+                    if (s.getBoundingClientRect().top < window.innerHeight - 60) s.classList.add('visible');
+                });
+                skillItems.forEach(s => {
+                    if (s.getBoundingClientRect().top < window.innerHeight - 60) {
+                        s.classList.add('visible');
+                        const fill = s.querySelector('.skill-fill');
+                        const w = s.getAttribute('data-width');
+                        if (fill && w) fill.style.width = w + '%';
+                        skillObserver.unobserve(s);
+                    }
+                });
+            }, 150);
+        });
+    </script>
+</body>
+</html>
