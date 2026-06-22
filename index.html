@@ -3,38 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afif Izzuddin · Portfolio</title>
+    <title>Afif Izzuddin · Dark Portfolio</title>
     <style>
         :root {
-            --primary: #0b1c2e;
-            --primary-light: #132a42;
-            --accent: #4da6b8;
-            --accent-light: #6ec6d8;
-            --accent-soft: #e0f4f8;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-            --text-light: #475569;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-            --shadow: 0 4px 20px rgba(0,0,0,0.06);
-            --shadow-md: 0 8px 32px rgba(0,0,0,0.08);
-            --shadow-lg: 0 16px 48px rgba(0,0,0,0.12);
+            --bg: #0b0f17;
+            --surface: #131a24;
+            --surface-light: #1b2431;
+            --card: #1a2230;
+            --border: #2a3342;
+            --text: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --text-muted: #6b7280;
+            --accent: #38bdf8;
+            --accent-strong: #0ea5e9;
+            --accent-glow: rgba(56, 189, 248, 0.25);
             --radius: 16px;
             --radius-sm: 12px;
+            --radius-xs: 8px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.6);
         }
 
-        * { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior:smooth; scroll-padding-top:80px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px;
+        }
+
         body {
             font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
+            background-color: var(--bg);
             color: var(--text);
             line-height: 1.7;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            background-image:
+                radial-gradient(ellipse at 30% 0%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 100%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
         }
 
         /* ============ NAVBAR ============ */
@@ -42,36 +54,42 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(14px);
+            background: rgba(19, 26, 36, 0.85);
+            backdrop-filter: blur(18px);
             border-bottom: 1px solid var(--border);
-            padding: 0 28px;
+            padding: 0 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 64px;
-            animation: fadeInDown 0.6s ease-out;
+            height: 68px;
+            animation: fadeInDown 0.7s ease-out;
         }
         @keyframes fadeInDown {
-            from { opacity:0; transform:translateY(-20px); }
-            to { opacity:1; transform:translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .nav-logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary);
-            letter-spacing: -0.3px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
         }
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 26px;
             list-style: none;
         }
         .nav-links a {
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.88rem;
-            color: var(--text-light);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
             transition: var(--transition);
             letter-spacing: 0.3px;
         }
@@ -80,19 +98,22 @@
         }
         .nav-cta {
             background: var(--accent);
-            color: #fff !important;
-            padding: 8px 18px;
+            color: #0f172a !important;
+            padding: 8px 20px;
             border-radius: 30px;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            box-shadow: 0 0 20px var(--accent-glow);
         }
         .nav-cta:hover {
-            background: var(--primary);
-            color: #fff !important;
+            background: var(--accent-strong);
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.4);
+            transform: translateY(-1px);
         }
 
         /* ============ HERO ============ */
         .hero {
-            padding: 80px 28px 70px;
+            padding: 90px 32px 70px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -102,68 +123,90 @@
             animation: fadeInUp 0.8s ease-out;
         }
         @keyframes fadeInUp {
-            from { opacity:0; transform:translateY(30px); }
-            to { opacity:1; transform:translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
+        /* ========== PROFILE IMAGE / AVATAR ========== */
         .hero-avatar {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            background: linear-gradient(135deg, var(--accent-strong), var(--accent));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 46px;
-            font-weight: 700;
-            color: #fff;
             margin-bottom: 24px;
-            box-shadow: 0 12px 36px rgba(77,166,184,0.35);
+            box-shadow: 0 0 48px var(--accent-glow);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 3px solid var(--accent);
         }
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .hero-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(56, 189, 248, 0.55);
+        }
+
         .hero h1 {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 800;
             letter-spacing: -0.8px;
-            color: var(--primary);
-            margin-bottom: 8px;
+            color: #ffffff;
+            margin-bottom: 10px;
         }
         .hero .tagline {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--accent);
             font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 20px;
+            letter-spacing: 0.6px;
+            margin-bottom: 24px;
         }
         .hero p {
-            max-width: 620px;
-            color: var(--text-light);
-            margin-bottom: 28px;
+            max-width: 640px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
             font-size: 1rem;
+            line-height: 1.7;
         }
         .hero-buttons {
             display: flex;
-            gap: 14px;
+            gap: 16px;
             flex-wrap: wrap;
             justify-content: center;
         }
         .btn {
             display: inline-block;
-            padding: 12px 28px;
+            padding: 12px 30px;
             border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.3px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.4px;
             text-decoration: none;
             transition: var(--transition);
+            cursor: pointer;
         }
         .btn-primary {
             background: var(--accent);
-            color: #fff;
-            box-shadow: 0 6px 20px rgba(77,166,184,0.35);
+            color: #0f172a;
+            box-shadow: 0 4px 16px var(--accent-glow);
         }
         .btn-primary:hover {
-            background: var(--primary);
+            background: var(--accent-strong);
             transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(11,28,46,0.25);
+            box-shadow: 0 8px 28px rgba(56, 189, 248, 0.45);
         }
         .btn-outline {
             border: 2px solid var(--accent);
@@ -172,18 +215,19 @@
         }
         .btn-outline:hover {
             background: var(--accent);
-            color: #fff;
+            color: #0f172a;
             transform: translateY(-2px);
+            box-shadow: 0 4px 20px var(--accent-glow);
         }
 
         /* ============ CONTAINER ============ */
         .container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
             padding: 0 28px;
         }
         .section {
-            padding: 64px 0;
+            padding: 70px 0;
             opacity: 0;
             transform: translateY(25px);
             transition: opacity 0.7s ease, transform 0.7s ease;
@@ -195,30 +239,53 @@
         .section-title {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 32px;
+            color: #ffffff;
+            margin-bottom: 36px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
-        .section-title span {
-            background: var(--accent-soft);
-            padding: 6px 14px;
+        .section-title .badge-count {
+            background: rgba(56, 189, 248, 0.12);
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--accent);
             letter-spacing: 0.5px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        /* ============ ABOUT CARD ============ */
+        .about-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 28px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            transition: var(--transition);
+        }
+        .about-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+        .about-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
         }
 
         /* ============ PROJECTS GRID ============ */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
         }
         .project-card {
-            background: var(--card-bg);
+            background: var(--card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -229,36 +296,36 @@
         }
         .project-card:hover {
             transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+            box-shadow: 0 16px 40px rgba(56, 189, 248, 0.15);
         }
         .project-img {
-            height: 160px;
-            background: linear-gradient(135deg, #e0f2f7, #c2e3ed);
+            height: 140px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2.4rem;
             color: var(--accent);
-            font-weight: 500;
-            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border);
         }
         .project-body {
-            padding: 20px 20px 22px;
+            padding: 22px 22px 24px;
             flex: 1;
             display: flex;
             flex-direction: column;
         }
         .project-body h3 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--primary);
+            margin-bottom: 8px;
+            color: #ffffff;
         }
         .project-body p {
-            font-size: 0.88rem;
-            color: var(--text-light);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             flex: 1;
         }
         .project-tech {
@@ -267,83 +334,86 @@
             gap: 6px;
         }
         .project-tech span {
-            background: #f1f5f9;
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            padding: 4px 10px;
+            background: rgba(56, 189, 248, 0.08);
+            color: var(--accent);
+            font-size: 0.72rem;
+            padding: 4px 12px;
             border-radius: 20px;
             font-weight: 600;
             letter-spacing: 0.3px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
         }
 
         /* ============ SKILLS ============ */
-        .skills-wrapper {
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 18px;
         }
         .skill-item {
-            background: var(--card-bg);
+            background: var(--card);
+            border: 1px solid var(--border);
             padding: 18px 20px;
             border-radius: var(--radius-sm);
-            box-shadow: var(--shadow-sm);
             transition: var(--transition);
         }
         .skill-item:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
         }
         .skill-header {
             display: flex;
             justify-content: space-between;
             font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: var(--text);
         }
         .skill-bar {
             height: 6px;
-            background: #e5e7eb;
+            background: #1e293b;
             border-radius: 10px;
             overflow: hidden;
         }
         .skill-fill {
             height: 100%;
             border-radius: 10px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            background: linear-gradient(90deg, var(--accent), var(--accent-strong));
             width: 0%;
             transition: width 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .skill-item.visible .skill-fill {
-            /* width set by JS */;
+            /* width set via JS */;
         }
 
-        /* ============ EXPERIENCE & EDUCATION CARDS ============ */
+        /* ============ CARDS (Experience, Education) ============ */
         .card-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 18px;
         }
         .info-card {
-            background: var(--card-bg);
-            padding: 22px 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 24px 26px;
             border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
             display: flex;
             gap: 16px;
             align-items: flex-start;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
         .info-card:hover {
-            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
             transform: translateX(4px);
+            box-shadow: var(--shadow-lg);
         }
         .info-icon {
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: var(--primary-light);
-            color: var(--accent-light);
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -352,7 +422,7 @@
         }
         .info-content h3 {
             font-weight: 700;
-            color: var(--primary);
+            color: #ffffff;
             font-size: 1.05rem;
         }
         .info-content .sub {
@@ -365,27 +435,27 @@
             color: var(--accent);
             font-weight: 600;
             letter-spacing: 0.5px;
+            margin-bottom: 6px;
         }
         .info-content p {
-            font-size: 0.88rem;
-            color: var(--text-light);
-            margin-top: 6px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
-        /* ============ AWARDS BADGES ============ */
+        /* ============ BADGES ============ */
         .badge-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
         .badge {
-            background: var(--card-bg);
+            background: rgba(56, 189, 248, 0.06);
+            border: 1px solid rgba(56, 189, 248, 0.2);
             padding: 10px 18px;
             border-radius: 30px;
             font-weight: 600;
-            font-size: 0.8rem;
-            color: var(--primary);
-            box-shadow: var(--shadow-sm);
+            font-size: 0.82rem;
+            color: var(--text);
             transition: var(--transition);
             display: flex;
             align-items: center;
@@ -393,34 +463,38 @@
             cursor: default;
         }
         .badge:hover {
-            background: var(--primary);
-            color: #fff;
+            background: var(--accent);
+            color: #0f172a;
+            border-color: var(--accent);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 6px 20px var(--accent-glow);
         }
         .badge::before {
             content: '🏅';
-            font-size: 0.75rem;
+            font-size: 0.8rem;
         }
 
-        /* ============ REFERENCES ============ */
+        /* ============ REFERENCE ============ */
         .ref-card {
-            background: var(--card-bg);
-            padding: 22px 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 24px 28px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            transition: var(--transition);
         }
-        .ref-card:hover {
-            box-shadow: var(--shadow-md);
+        .ref-card h3 {
+            color: #fff;
+        }
+        .ref-card p {
+            color: var(--text-secondary);
         }
 
         /* ============ FOOTER ============ */
         .footer {
             text-align: center;
-            padding: 36px 20px;
+            padding: 32px 20px;
             color: var(--text-muted);
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             border-top: 1px solid var(--border);
             margin-top: 20px;
         }
@@ -428,62 +502,30 @@
         /* ============ RESPONSIVE ============ */
         @media (max-width: 700px) {
             .navbar {
-                padding: 0 16px;
-                height: 56px;
+                padding: 0 18px;
+                height: 60px;
             }
             .nav-links {
                 gap: 14px;
             }
             .nav-links a {
-                font-size: 0.78rem;
+                font-size: 0.8rem;
             }
             .hero h1 {
                 font-size: 2rem;
             }
             .section {
-                padding: 44px 0;
+                padding: 50px 0;
             }
             .container {
-                padding: 0 16px;
+                padding: 0 18px;
             }
-        }
-
-        /* ============ BACKGROUND DECORATION ============ */
-        .bg-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.04;
-            animation: floatShape 24s infinite ease-in-out;
-        }
-        .shape:nth-child(1) { width:400px; height:400px; background:var(--accent); top:-100px; right:-80px; }
-        .shape:nth-child(2) { width:280px; height:280px; background:var(--primary); bottom:-80px; left:-60px; animation-delay:-8s; }
-        .shape:nth-child(3) { width:200px; height:200px; background:var(--accent); top:40%; left:50%; animation-delay:-16s; }
-        @keyframes floatShape {
-            0%,100% { transform:translate(0,0) scale(1); }
-            25% { transform:translate(35px,-28px) scale(1.05); }
-            50% { transform:translate(-16px,22px) scale(0.95); }
-            75% { transform:translate(24px,12px) scale(1.02); }
         }
     </style>
 </head>
 <body>
-    <div class="bg-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
 
-    <!-- Navigation -->
+    <!-- ========== NAVIGATION ========== -->
     <nav class="navbar">
         <div class="nav-logo">Afif Izzuddin</div>
         <ul class="nav-links">
@@ -495,11 +537,15 @@
         </ul>
     </nav>
 
-    <!-- Hero -->
+    <!-- ========== HERO ========== -->
     <header class="hero" id="home">
-        <div class="hero-avatar">AI</div>
+        <!-- Profile image is now using gambarCV.png -->
+        <div class="hero-avatar">
+            <img src="gambarCV.png" alt="Muhammad Afif Izzuddin">
+        </div>
+
         <h1>Muhammad Afif Izzuddin<br>Mohd Najib</h1>
-        <p class="tagline">Electronic Network Design · IoT & Embedded Systems Enthusiast</p>
+        <p class="tagline">Electronic Network Design · IoT & Embedded Systems</p>
         <p>Bachelor's student at UniMAP building intelligent hardware-software solutions. Passionate about networking, cybersecurity, and creating technology that solves real‑world problems.</p>
         <div class="hero-buttons">
             <a href="https://www.linkedin.com/in/muhammad-afif-izzuddin-mohd-najib" target="_blank" class="btn btn-primary">LinkedIn</a>
@@ -511,26 +557,24 @@
 
         <!-- About -->
         <section class="section" id="about">
-            <h2 class="section-title">About <span>Me</span></h2>
-            <div class="info-card">
-                <div class="info-icon">👤</div>
-                <div class="info-content">
-                    <p style="font-size:0.96rem; color:var(--text-light);">
-                        Electronic Network Design undergraduate from <strong>Universiti Malaysia Perlis (UniMAP)</strong>, currently in Semester 3 of the Bachelor of Electronic Engineering Technology (Hons.) program. I bring hands‑on experience with embedded systems, IoT prototyping, and web‑based monitoring tools. I'm seeking an internship in Semester 6 to apply my skills in a professional engineering environment.
-                    </p>
-                </div>
+            <h2 class="section-title">About <span class="badge-count">Me</span></h2>
+            <div class="about-card">
+                <div class="about-icon">👨‍💻</div>
+                <p style="color:var(--text-secondary); font-size:0.98rem;">
+                    Electronic Network Design undergraduate from <strong style="color:#fff;">Universiti Malaysia Perlis (UniMAP)</strong>, currently in Semester 3 of the Bachelor of Electronic Engineering Technology (Hons.) program. I bring hands‑on experience with embedded systems, IoT prototyping, and web‑based monitoring tools. I'm seeking an internship in Semester 6 to apply my skills in a professional engineering environment.
+                </p>
             </div>
         </section>
 
-        <!-- Projects (Portfolio highlight) -->
+        <!-- Projects -->
         <section class="section" id="projects">
-            <h2 class="section-title">Featured Projects <span>4</span></h2>
+            <h2 class="section-title">Featured Projects <span class="badge-count">4</span></h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-img">🌡️📊</div>
                     <div class="project-body">
                         <h3>Portable Microclimate Monitor</h3>
-                        <p>Real-time environmental monitoring system using Raspberry Pi 3B+, DHT11, LDR, and rain sensors. Live data displayed via Flask web interface.</p>
+                        <p>Real-time environmental monitoring using Raspberry Pi 3B+, DHT11, LDR, and rain sensors. Live data via Flask web interface.</p>
                         <div class="project-tech">
                             <span>Python</span><span>Flask</span><span>Raspberry Pi</span><span>IoT</span>
                         </div>
@@ -540,7 +584,7 @@
                     <div class="project-img">🧺☀️</div>
                     <div class="project-body">
                         <h3>Automatic Drying Rack</h3>
-                        <p>ESP32-controlled smart rack that opens/closes based on rain and temperature. Remote notifications via Blynk. Won Gold Award at DIPEX 2023.</p>
+                        <p>ESP32-controlled smart rack using rain/temp sensors. Remote notifications via Blynk. 🥇 Gold Award DIPEX 2023.</p>
                         <div class="project-tech">
                             <span>C++</span><span>ESP32</span><span>Blynk</span><span>IoT</span>
                         </div>
@@ -550,9 +594,9 @@
                     <div class="project-img">🏥📅</div>
                     <div class="project-body">
                         <h3>Doctor Appointment System</h3>
-                        <p>Web-based booking platform to streamline doctor-patient appointments, using MySQL for database management.</p>
+                        <p>Web-based booking platform for doctor-patient appointments with MySQL database.</p>
                         <div class="project-tech">
-                            <span>PHP</span><span>MySQL</span><span>HTML</span><span>Web</span>
+                            <span>PHP</span><span>MySQL</span><span>HTML</span>
                         </div>
                     </div>
                 </div>
@@ -560,7 +604,7 @@
                     <div class="project-img">📚📈</div>
                     <div class="project-body">
                         <h3>Student Result Management</h3>
-                        <p>User-friendly system for schools to input, access, and analyze student grades. Designed for administrators, teachers, parents, and students.</p>
+                        <p>User-friendly system for schools to manage student grades. Designed for admins, teachers, parents, and students.</p>
                         <div class="project-tech">
                             <span>Web Dev</span><span>Database</span><span>UI/UX</span>
                         </div>
@@ -571,37 +615,37 @@
 
         <!-- Skills -->
         <section class="section" id="skills">
-            <h2 class="section-title">Technical Skills <span>Core</span></h2>
-            <div class="skills-wrapper">
-                <div class="skill-item" data-width="90"><div class="skill-header"><span>C / C++</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+            <h2 class="section-title">Technical Skills <span class="badge-count">Core</span></h2>
+            <div class="skills-grid">
+                <div class="skill-item" data-width="92"><div class="skill-header"><span>C / C++</span><span>92%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
                 <div class="skill-item" data-width="85"><div class="skill-header"><span>HTML / PHP</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
-                <div class="skill-item" data-width="88"><div class="skill-header"><span>MySQL & Databases</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
-                <div class="skill-item" data-width="80"><div class="skill-header"><span>VHDL</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
-                <div class="skill-item" data-width="82"><div class="skill-header"><span>JAVA</span><span>82%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
-                <div class="skill-item" data-width="92"><div class="skill-header"><span>Cisco Packet Tracer</span><span>92%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="90"><div class="skill-header"><span>MySQL & Databases</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="82"><div class="skill-header"><span>VHDL</span><span>82%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="80"><div class="skill-header"><span>JAVA</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+                <div class="skill-item" data-width="94"><div class="skill-header"><span>Cisco Packet Tracer</span><span>94%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
                 <div class="skill-item" data-width="88"><div class="skill-header"><span>Arduino / ESP32</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
                 <div class="skill-item" data-width="78"><div class="skill-header"><span>AutoCAD / Quartus II</span><span>78%</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
             </div>
-            <div style="margin-top:24px;">
-                <p style="font-weight:600; margin-bottom:12px; color:var(--primary);">Tools & Platforms</p>
+            <div style="margin-top:28px;">
+                <p style="font-weight:600; margin-bottom:14px; color:var(--text);">🛠️ Tools & Platforms</p>
                 <div class="badge-grid">
-                    <span class="badge" style="background:#f1f5f9;">Microsoft Office</span>
-                    <span class="badge" style="background:#f1f5f9;">Canva</span>
-                    <span class="badge" style="background:#f1f5f9;">Scilab</span>
-                    <span class="badge" style="background:#f1f5f9;">Putty</span>
-                    <span class="badge" style="background:#f1f5f9;">WampServer</span>
-                    <span class="badge" style="background:#f1f5f9;">Blynk</span>
-                    <span class="badge" style="background:#f1f5f9;">Huawei eSNP</span>
-                    <span class="badge" style="background:#f1f5f9;">Raspbian</span>
-                    <span class="badge" style="background:#f1f5f9;">Ubuntu</span>
-                    <span class="badge" style="background:#f1f5f9;">Windows 11</span>
+                    <span class="badge">Microsoft Office</span>
+                    <span class="badge">Canva</span>
+                    <span class="badge">Scilab</span>
+                    <span class="badge">Putty</span>
+                    <span class="badge">WampServer</span>
+                    <span class="badge">Blynk</span>
+                    <span class="badge">Huawei eSNP</span>
+                    <span class="badge">Raspbian</span>
+                    <span class="badge">Ubuntu</span>
+                    <span class="badge">Windows 11</span>
                 </div>
             </div>
         </section>
 
         <!-- Experience -->
         <section class="section" id="experience">
-            <h2 class="section-title">Experience <span>1</span></h2>
+            <h2 class="section-title">Work Experience <span class="badge-count">1</span></h2>
             <div class="card-list">
                 <div class="info-card">
                     <div class="info-icon">💼</div>
@@ -609,7 +653,7 @@
                         <h3>Industrial Training – IT Department</h3>
                         <div class="sub">Imedikel Pharma Holding Berhad</div>
                         <div class="date">08 Jan 2024 – 05 May 2024</div>
-                        <p>Provided IT support, managed data analysis with Xilnex & Excel, assisted in system reporting, and participated in software research/automation (WhatsApp system, basic HTML).</p>
+                        <p>Provided IT support, managed data analysis with Xilnex & Excel, assisted in system reporting, and participated in software research/automation.</p>
                     </div>
                 </div>
             </div>
@@ -617,13 +661,13 @@
 
         <!-- Education -->
         <section class="section" id="education">
-            <h2 class="section-title">Education <span>2</span></h2>
+            <h2 class="section-title">Education <span class="badge-count">2</span></h2>
             <div class="card-list">
                 <div class="info-card">
                     <div class="info-icon">🎓</div>
                     <div class="info-content">
                         <h3>Bachelor of Electronic Engineering Technology (Hons.)</h3>
-                        <div class="sub">Electronic Network Design · Universiti Malaysia Perlis (UniMAP)</div>
+                        <div class="sub">Electronic Network Design · UniMAP</div>
                         <div class="date">October 2024 – Present (Semester 3)</div>
                     </div>
                 </div>
@@ -640,17 +684,17 @@
 
         <!-- Awards & Certifications -->
         <section class="section" id="awards">
-            <h2 class="section-title">Awards & Certifications <span>11</span></h2>
+            <h2 class="section-title">Awards & Certifications <span class="badge-count">11</span></h2>
             <div class="badge-grid">
                 <span class="badge">Junior Cybersecurity Analyst</span>
                 <span class="badge">Networking Academy Learn-A-Thon 2025</span>
                 <span class="badge">AWS Cloud Foundations</span>
                 <span class="badge">Discovering Entrepreneurship</span>
                 <span class="badge">Ethical Hacker</span>
-                <span class="badge">Introduction to Cybersecurity</span>
-                <span class="badge">Introduction to Data Science</span>
-                <span class="badge">Introduction to IoT</span>
-                <span class="badge">Introduction to Modern AI</span>
+                <span class="badge">Intro to Cybersecurity</span>
+                <span class="badge">Intro to Data Science</span>
+                <span class="badge">Intro to IoT</span>
+                <span class="badge">Intro to Modern AI</span>
                 <span class="badge">Cisco CCNA: Intro to Networks</span>
                 <span class="badge">Gold Award DIPEX 2023</span>
             </div>
@@ -658,20 +702,20 @@
 
         <!-- Languages -->
         <section class="section" id="languages">
-            <h2 class="section-title">Languages <span>2</span></h2>
+            <h2 class="section-title">Languages <span class="badge-count">2</span></h2>
             <div class="badge-grid">
-                <span class="badge" style="background:#e0f2f1;">🇲🇾 Malay – Proficient</span>
-                <span class="badge" style="background:#e0f2f1;">🇬🇧 English – Medium</span>
+                <span class="badge">🇲🇾 Malay – Proficient</span>
+                <span class="badge">🇬🇧 English – Medium</span>
             </div>
         </section>
 
         <!-- References -->
         <section class="section" id="references">
-            <h2 class="section-title">Reference <span>1</span></h2>
+            <h2 class="section-title">Reference <span class="badge-count">1</span></h2>
             <div class="ref-card">
-                <h3 style="color:var(--primary);">Ts. Dr. 'Aini Syuhada binti Md Zain</h3>
-                <p style="color:var(--text-muted); font-size:0.9rem;">Pengerusi Rancangan Teknologi Kejuruteraan Elektronik (Reka Bentuk Rangkaian Elektronik)<br>Faculty of Electronic Engineering Technology (FKTEN), Universiti Malaysia Perlis</p>
-                <p style="margin-top:8px; font-size:0.85rem; color:var(--accent);">📧 ainisyuhada@unimap.edu.my &nbsp;|&nbsp; 📞 +60 17-416 4159</p>
+                <h3>Ts. Dr. 'Aini Syuhada binti Md Zain</h3>
+                <p style="color:var(--text-muted);">Pengerusi Rancangan Teknologi Kejuruteraan Elektronik (Reka Bentuk Rangkaian Elektronik)<br>Faculty of Electronic Engineering Technology (FKTEN), Universiti Malaysia Perlis</p>
+                <p style="margin-top:10px; color:var(--accent);">📧 ainisyuhada@unimap.edu.my &nbsp;|&nbsp; 📞 +60 17-416 4159</p>
             </div>
         </section>
 
@@ -682,57 +726,46 @@
     </footer>
 
     <script>
-        // Scroll reveal animations
+        // Scroll reveal
         const sections = document.querySelectorAll('.section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting) entry.target.classList.add('visible');
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
         sections.forEach(s => observer.observe(s));
 
         // Skill bar animation
         const skillItems = document.querySelectorAll('.skill-item');
         const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     const fill = entry.target.querySelector('.skill-fill');
                     const width = entry.target.getAttribute('data-width');
-                    if(fill && width) fill.style.width = width + '%';
+                    if (fill && width) fill.style.width = width + '%';
                     skillObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.25 });
         skillItems.forEach(s => skillObserver.observe(s));
 
         // Initial load check
         window.addEventListener('load', () => {
             setTimeout(() => {
                 sections.forEach(s => {
-                    if(s.getBoundingClientRect().top < window.innerHeight-60) s.classList.add('visible');
+                    if (s.getBoundingClientRect().top < window.innerHeight - 60) s.classList.add('visible');
                 });
                 skillItems.forEach(s => {
-                    if(s.getBoundingClientRect().top < window.innerHeight-60) {
+                    if (s.getBoundingClientRect().top < window.innerHeight - 60) {
                         s.classList.add('visible');
                         const fill = s.querySelector('.skill-fill');
                         const w = s.getAttribute('data-width');
-                        if(fill && w) fill.style.width = w + '%';
+                        if (fill && w) fill.style.width = w + '%';
                         skillObserver.unobserve(s);
                     }
                 });
-            }, 200);
-        });
-
-        // Smooth parallax on shapes
-        const shapes = document.querySelectorAll('.shape');
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 16;
-            const y = (e.clientY / window.innerHeight - 0.5) * 16;
-            shapes.forEach((s, i) => {
-                const f = (i+1)*0.5;
-                s.style.transform = `translate(${x*f}px, ${y*f}px)`;
-            });
+            }, 150);
         });
     </script>
 </body>
